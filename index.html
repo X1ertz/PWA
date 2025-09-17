@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My PWA - Offline Notifications</title>
+    
+    <meta name="theme-color" content="#2196F3">
+    <meta name="description" content="Progressive Web App ที่รองรับ offline และ notifications">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📱</text></svg>">
+    <link rel="manifest" href="./manifest.json">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📱 My PWA App</h1>
+            <p class="subtitle">Progressive Web App with Offline Support</p>
+        </header>
+
+        <main>
+
+            <div class="status-card">
+                <h3>📶 Connection Status</h3>
+                <p id="connection-status" class="status online">Online ✅</p>
+            </div>
+
+            <div class="card">
+                <h3>🔔 Notifications</h3>
+                <button id="enable-notifications" class="btn primary">
+                    Enable Notifications
+                </button>
+                <button id="send-notification" class="btn secondary" disabled>
+                    Send Test Notification
+                </button>
+                <p id="notification-status">Click to enable notifications</p>
+            </div>
+
+            <div class="card">
+                <h3>📝 Todo List (Offline Support)</h3>
+                <div class="input-group">
+                    <input type="text" id="todo-input" placeholder="เพิ่มรายการใหม่...">
+                    <button id="add-todo" class="btn primary">Add</button>
+                </div>
+                <ul id="todo-list"></ul>
+            </div>
+
+            <div class="card" id="install-card" style="display: none;">
+                <h3>📱 Install App</h3>
+                <p>ติดตั้งแอปนี้บนอุปกรณ์ของคุณเพื่อใช้งานแบบ offline</p>
+                <button id="install-btn" class="btn success">Install PWA</button>
+            </div>
+
+           
+        </main>
+
+        <footer>
+            <p>&copy; 2025 My PWA App - Built with ❤️</p>
+        </footer>
+    </div>
+
+    <script src="./app.js"></script>
+</body>
+</html>

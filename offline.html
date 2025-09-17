@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - My PWA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .offline-container {
+            max-width: 500px;
+            animation: fadeInUp 0.6s ease;
+        }
+        
+        .offline-icon {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+        }
+        
+        .btn:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+        
+        .features {
+            margin-top: 40px;
+            text-align: left;
+        }
+        
+        .features h3 {
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .features li:before {
+            content: "✅ ";
+            margin-right: 10px;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .offline-icon {
+                font-size: 3rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="offline-container">
+        <div class="offline-icon">📱</div>
+        <h1>Offline Mode</h1>
+        <p>คุณกำลังใช้งานแบบ offline<br>ฟีเจอร์บางอย่างยังคงใช้งานได้</p>
+        
+        <a href="/" class="btn">กลับหน้าหลัก</a>
+        <button class="btn" onclick="location.reload()">ลองใหม่</button>
+        
+        <div class="features">
+            <h3>🚀 ฟีเจอร์ที่ใช้งานได้แบบ offline:</h3>
+            <ul>
+                <li>ดู Todo List ที่บันทึกไว้</li>
+                <li>เพิ่ม/ลบ/แก้ไข Todo</li>
+                <li>ใช้งาน UI ทั้งหมด</li>
+                <li>รับ Notifications</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // ตรวจสอบการเชื่อมต่อและรีเฟรชอัตโนมัติ
+        window.addEventListener('online', () => {
+            // เมื่อกลับมา online ให้กลับไปหน้าหลัก
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 1000);
+        });
+        
+        // แสดงสถานะการเชื่อมต่อแบบ real-time
+        setInterval(() => {
+            if (navigator.onLine) {
+                document.querySelector('p').innerHTML = 
+                    '🎉 กลับมา online แล้ว!<br>กำลังโหลดหน้าหลัก...';
+                setTimeout(() => {
+                    window.location.href = '/';
+                }, 2000);
+            }
+        }, 2000);
+    </script>
+</body>
+</html>
